@@ -14,8 +14,8 @@ This is still WIP but if you'd like to give it a run, feel free to go through th
 - start talking to yourself by typing messages in the websocat clients. 
 
 ## Todo
-[] create and fix project structure 
-[] refactor code
-[] create htmx client instead of websocat - cause i want to learn htmx
-[] create rooms 
-[] other things i cant think of right now
+- [ ] create and fix project structure 
+- [ ] refactor code
+- [ ] create htmx client instead of websocat - cause i want to learn htmx
+- [ ] create rooms 
+- [ ] other things i cant think of right now
