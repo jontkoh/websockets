@@ -160,6 +160,7 @@ func removeClient(conn *net.Conn) {
 // Broadcast a message to all clients (except the sender)
 func broadcastMessage(sender *net.Conn, message string) {
 	clientsMutex.Lock()
+	defer clientsMutex.Unlock()
 	for conn := range clients {
 		if conn != sender { // Check if the current connection is not the sender
 			writeMessage(*conn, message)
