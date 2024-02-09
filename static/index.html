@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- <link rel="stylesheet" href="styles.css" /> -->
+    <style>
+        .header {
+            text-align: center;
+            font-size: 32px;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+
+        body {
+            background-color: #d2f8d2;
+            /* light green background */
+            font-family: Arial, sans-serif;
+            /* box-sizing: border-box; */
+        }
+
+        .chat-container {
+            width: 50%;
+        }
+
+        .chat-child {
+            float: left;
+            width: 50%;
+        }
+
+        .chat-box {
+            overflow: auto;
+            background-color: khaki;
+            max-width: 500px;
+            max-height: 500px;
+            height: 200px;
+            width: 50%;
+            padding: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .chat-form {
+            width: 300px;
+            /* Fixed width to match chat boxes */
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .chat-form input[type="text"] {
+            width: 90%;
+            /* relative width */
+            padding: 8px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .chat-form button {
+            padding: 8px 16px;
+            background-color: #ffd700;
+            /* gold color */
+            border: none;
+            border-radius: 4px;
+            /* slightly rounded corners for button */
+            cursor: pointer;
+        }
+
+        .chat-form button:hover {
+            background-color: #ffcf40;
+            /* darker yellow on hover */
+        }
+    </style>
+    <title>Chat Application</title>
+</head>
+
+<body>
+    <h1>Chat with yourself</h1>
+    <div id="chat-container">
+
+        <div class="chat-child">
+            <div id="chatbox" class="chat-box"></div>
+            <form id="form" class="chat-form" onsubmit="sendMessage(event)">
+                <input id="input" type="text" placeholder="input text here..."></input>
+                <button type="submit">Send</button>
+            </form>
+
+        </div>
+
+
+    </div>
+    <script src="scripts.js"></script>
+    <!-- figure this out. -->
+    <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+</body>
+
+</html>

@@ -123,14 +123,17 @@ func initiateWebSocket(w http.ResponseWriter, r *http.Request) {
 			fmt.Printf("Received message: %s\n", message)
 
 			// Example of sending a message back
-			responseMessage := "Echo: " + message
-			broadcastMessage(&conn, responseMessage)
-			if err := writeMessage(conn, responseMessage); err != nil {
+			broadcastMessage(&conn, message)
+			if err := writeMessage(conn, message); err != nil {
 				log.Printf("Error sending message: %v", err)
 				return
 			}
 		}
 	}()
+}
+
+type NewMessageData struct {
+	Message string `json:"message"`
 }
 
 var (
@@ -157,18 +160,9 @@ func removeClient(conn *net.Conn) {
 // Broadcast a message to all clients (except the sender)
 func broadcastMessage(sender *net.Conn, message string) {
 	clientsMutex.Lock()
-	defer clientsMutex.Unlock()
 	for conn := range clients {
 		if conn != sender { // Check if the current connection is not the sender
 			writeMessage(*conn, message)
 		}
 	}
-}
-
-func main() {
-	mux := http.NewServeMux()
-
-	mux.HandleFunc("/ws", initiateWebSocket)
-
-	http.ListenAndServe(":3000", mux)
 }
