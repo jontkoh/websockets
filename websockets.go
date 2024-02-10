@@ -45,7 +45,7 @@ func readMessage(conn net.Conn) (string, error) {
 		_, err = conn.Read(maskKey[:]) // Read the masking key directly if length <= 125
 	}
 
-	payload := make([]byte, length)
+	payload := make([]byte, payloadLength)
 	_, err = conn.Read(payload)
 	if err != nil {
 		return "", err
@@ -108,6 +108,7 @@ func initiateWebSocket(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
+	fmt.Printf("websocket connected with: %s", conn)
 
 	go func() {
 		defer conn.Close()
